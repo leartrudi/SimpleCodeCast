@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]
+# Use Devise for User_auth
+gem 'devise' '~> 3.4.1'
 
 # Use postresql as the database for the production 
 group :production do
