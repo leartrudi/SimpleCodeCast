@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations'} #To use the self-edited for Stripe (CC infos)registration
   resources :contacts
   get '/about' => 'pages#about'
   root 'pages#home'
