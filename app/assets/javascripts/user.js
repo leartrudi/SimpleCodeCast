@@ -8,21 +8,19 @@ $(document).ready(function() {
   $("#form-submit-btn").click(function(event) {
     event.preventDefault();
     $('input[type=submit]').prop('disabled', true);
-    var error = false;
+    
     var ccNum = $('#card_number').val(),
         cvcNum = $('#card_code').val(),
         expMonth = $('#card_month').val(),
         expYear = $('#card_year').val();
     
-    if (!error) {
-      // Get the Stripe token:
-       Stripe::Token.create({
-        number: ccNum,
-        cvc: cvcNum,
-        exp_month: expMonth,
-        exp_year: expYear
-      }, stripeResponseHandler);
-    }
+    Stripe::Token.create({
+      number: ccNum,
+      cvc: cvcNum,
+      exp_month:expMonth,
+      exp_year: expYear
+    }, stripeResponseHandler);
+    
     return false;
   }); // form submission
   

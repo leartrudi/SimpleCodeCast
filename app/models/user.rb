@@ -12,8 +12,12 @@ class User < ActiveRecord::Base
     if valid?
        require "stripe"
       Stripe.api_key = "sk_test_E3kG8D0f8TfuOKkdPtHSOnlt"
-      #Stripe::Plan.retrieve("2")
-      customer = Stripe::Customer.create(email: email, source: stripe_card_token)
+      # Create a Customer
+
+       customer = Stripe::Customer.create(
+         :email => email,
+          :source => stripe_card_token
+        )
       self.stripe_customer_token = customer.id
       save!
     end
