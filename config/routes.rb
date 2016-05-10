@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   get 'payment/index'
 
   get 'payment/pay'
-
-   resources :charges
-   devise_for :users, controllers: { registrations: 'users/registrations' } #To use the self-edited for Stripe (CC infos)registration
+   
+  resources :charges
+  devise_for :users, controllers: { registrations: 'users/registrations' } #To use the self-edited for Stripe (CC infos)registration
+  resources :users do
+      resource :profile
+  end
   resources :contacts
   get '/about' => 'pages#about'
   root 'pages#home'
